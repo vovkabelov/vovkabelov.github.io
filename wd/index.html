@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f6f1e9">
+	<title>Владимир &amp; Алена — 1 августа 2026</title>
+	<meta name="description" content="Свадьба Владимира и Алены — 1 августа 2026 года в Хуторе Мушкино.">
+	<script>document.documentElement.classList.add('js');</script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--paper: #f6f1e9;
+			--paper-light: #fbf8f3;
+			--ink: #37352f;
+			--muted: #746f66;
+			--terra: #b96f50;
+			--terra-light: #d2a28c;
+			--sage: #74816a;
+			--line: #d8cec1;
+			--sand: #d8c3a4;
+			--brown: #6f5546;
+			--display: 'Prata', serif;
+			--body: 'Manrope', sans-serif;
+			--ease: cubic-bezier(.22, 1, .36, 1);
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			background: var(--paper);
+			color: var(--ink);
+			font-family: var(--body);
+			font-weight: 300;
+			line-height: 1.65;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		body::after {
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+			content: '';
+			inset: 0;
+			opacity: .5;
+			pointer-events: none;
+			position: fixed;
+			z-index: 20;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		.shell {
+			margin: 0 auto;
+			max-width: 1180px;
+			padding-inline: clamp(1.25rem, 5vw, 4rem);
+		}
+
+		.kicker {
+			color: var(--terra);
+			font-size: .68rem;
+			font-weight: 500;
+			letter-spacing: .24em;
+			text-transform: uppercase;
+		}
+
+		.title {
+			font-family: var(--display);
+			font-size: clamp(2.4rem, 5vw, 4.7rem);
+			font-weight: 400;
+			letter-spacing: -.035em;
+			line-height: 1.08;
+		}
+
+		.button {
+			align-items: center;
+			border: 1px solid var(--ink);
+			display: inline-flex;
+			font-size: .72rem;
+			font-weight: 500;
+			justify-content: center;
+			letter-spacing: .13em;
+			min-height: 50px;
+			padding: .8rem 1.35rem;
+			text-decoration: none;
+			text-transform: uppercase;
+			transition: background .3s, color .3s, transform .3s;
+		}
+
+		.button:hover {
+			background: var(--ink);
+			color: var(--paper-light);
+			transform: translateY(-2px);
+		}
+
+		.button--light {
+			border-color: rgba(255,255,255,.65);
+			color: white;
+		}
+
+		.button--light:hover {
+			background: white;
+			color: var(--ink);
+		}
+
+		/* Первый экран */
+		.hero {
+			background: var(--paper-light);
+			display: grid;
+			grid-template-columns: minmax(300px, 44%) 1fr;
+			min-height: 100svh;
+			overflow: hidden;
+		}
+
+		.hero__art {
+			background: #c89578 url('botanical.png') left center / cover no-repeat;
+			min-height: 100%;
+			position: relative;
+		}
+
+		.hero__art::after {
+			background: linear-gradient(90deg, transparent 65%, var(--paper-light));
+			content: '';
+			inset: 0;
+			position: absolute;
+		}
+
+		.hero__body {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			padding: clamp(2.5rem, 7vw, 7rem) clamp(1.5rem, 7vw, 6rem);
+			position: relative;
+			text-align: center;
+		}
+
+		.hero__body::before {
+			border: 1px solid var(--line);
+			content: '';
+			inset: 1.25rem;
+			pointer-events: none;
+			position: absolute;
+		}
+
+		.hero__content {
+			max-width: 520px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.hero__intro {
+			font-size: .7rem;
+			letter-spacing: .22em;
+			margin-bottom: 1.8rem;
+			text-transform: uppercase;
+		}
+
+		.hero__names {
+			font-family: var(--display);
+			font-size: clamp(3.3rem, 8vw, 7rem);
+			font-weight: 400;
+			letter-spacing: -.055em;
+			line-height: .95;
+		}
+
+		.hero__amp {
+			color: var(--terra);
+			display: block;
+			font-family: var(--display);
+			font-size: .48em;
+			line-height: .95;
+			margin: .15em 0;
+		}
+
+		.hero__date {
+			align-items: center;
+			display: flex;
+			font-family: var(--display);
+			font-size: clamp(1.1rem, 2vw, 1.4rem);
+			gap: 1rem;
+			justify-content: center;
+			letter-spacing: .09em;
+			margin: 2.25rem 0 .65rem;
+			text-transform: uppercase;
+		}
+
+		.hero__date::before,
+		.hero__date::after {
+			background: var(--line);
+			content: '';
+			height: 1px;
+			width: 48px;
+		}
+
+		.hero__place {
+			color: var(--muted);
+			font-size: .86rem;
+			letter-spacing: .08em;
+		}
+
+		.scroll-cue {
+			bottom: 2rem;
+			color: var(--muted);
+			font-size: .62rem;
+			left: 50%;
+			letter-spacing: .16em;
+			position: absolute;
+			text-decoration: none;
+			text-transform: uppercase;
+			transform: translateX(-50%);
+		}
+
+		.scroll-cue::after {
+			animation: scroll 1.8s ease-in-out infinite;
+			background: var(--terra);
+			content: '';
+			display: block;
+			height: 30px;
+			margin: .65rem auto 0;
+			width: 1px;
+		}
+
+		@keyframes scroll {
+			0%, 100% { transform: scaleY(.45); transform-origin: top; }
+			50% { transform: scaleY(1); transform-origin: top; }
+		}
+
+		/* Обращение и счетчик */
+		.welcome {
+			padding-block: clamp(5rem, 11vw, 9rem);
+			text-align: center;
+		}
+
+		.welcome__text {
+			font-family: var(--display);
+			font-size: clamp(1.65rem, 3.4vw, 3rem);
+			line-height: 1.5;
+			margin: 1.2rem auto 0;
+			max-width: 900px;
+		}
+
+		.welcome__text em {
+			color: var(--terra);
+			font-style: normal;
+		}
+
+		.countdown {
+			display: grid;
+			gap: 1px;
+			grid-template-columns: repeat(4, 1fr);
+			margin: clamp(3rem, 7vw, 5rem) auto 0;
+			max-width: 720px;
+		}
+
+		.countdown__item {
+			border-left: 1px solid var(--line);
+			padding: 0 .5rem;
+		}
+
+		.countdown__item:last-child {
+			border-right: 1px solid var(--line);
+		}
+
+		.countdown__value {
+			display: block;
+			font-family: var(--display);
+			font-size: clamp(2rem, 5vw, 3.6rem);
+			line-height: 1;
+		}
+
+		.countdown__label {
+			color: var(--muted);
+			display: block;
+			font-size: .6rem;
+			letter-spacing: .14em;
+			margin-top: .65rem;
+			text-transform: uppercase;
+		}
+
+		/* Тайминг */
+		.program {
+			background: #707b67;
+			color: #f7f3eb;
+			padding: clamp(5rem, 10vw, 9rem) 0;
+			position: relative;
+		}
+
+		.program::before {
+			background: url('botanical.png') left center / cover no-repeat;
+			content: '';
+			inset: 0 auto 0 0;
+			opacity: .12;
+			position: absolute;
+			width: 42%;
+		}
+
+		.program .kicker {
+			color: #e0c1aa;
+		}
+
+		.program__grid {
+			display: grid;
+			gap: clamp(3rem, 8vw, 8rem);
+			grid-template-columns: .8fr 1.2fr;
+			position: relative;
+		}
+
+		.program__intro p {
+			color: rgba(255,255,255,.72);
+			margin-top: 1.4rem;
+			max-width: 380px;
+		}
+
+		.timeline {
+			list-style: none;
+		}
+
+		.timeline__item {
+			border-top: 1px solid rgba(255,255,255,.28);
+			display: grid;
+			gap: 1.5rem;
+			grid-template-columns: 90px 1fr;
+			padding: 1.4rem 0;
+		}
+
+		.timeline__time {
+			color: #e5bda8;
+			font-family: var(--display);
+			font-size: 1.35rem;
+		}
+
+		.timeline__name {
+			font-family: var(--display);
+			font-size: 1.35rem;
+		}
+
+		.timeline__note {
+			color: rgba(255,255,255,.63);
+			font-size: .78rem;
+			margin-top: .25rem;
+		}
+
+		/* Место */
+		.location {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			min-height: 680px;
+		}
+
+		.location__map {
+			align-items: flex-start;
+			background:
+				linear-gradient(35deg, transparent 48%, rgba(116,129,106,.24) 49%, rgba(116,129,106,.24) 51%, transparent 52%) 0 0 / 76px 76px,
+				#e5e0d6;
+			display: flex;
+			min-height: 520px;
+			padding: clamp(1.5rem, 5vw, 4rem);
+			position: relative;
+		}
+
+		.location__map iframe {
+			border: 0;
+			filter: grayscale(1) sepia(.14) contrast(.88);
+			height: 100%;
+			inset: 0;
+			position: absolute;
+			width: 100%;
+		}
+
+		.location__badge {
+			background: rgba(246,241,233,.94);
+			max-width: 330px;
+			padding: 1.3rem 1.5rem;
+			position: relative;
+			z-index: 1;
+		}
+
+		.location__badge strong {
+			display: block;
+			font-family: var(--display);
+			font-size: 1.2rem;
+			font-weight: 400;
+		}
+
+		.location__badge span {
+			color: var(--muted);
+			display: block;
+			font-size: .75rem;
+			line-height: 1.5;
+			margin-top: .35rem;
+		}
+
+		.location__content {
+			align-items: center;
+			background: var(--paper-light);
+			display: flex;
+			padding: clamp(3rem, 8vw, 7rem);
+		}
+
+		.location__content p {
+			color: var(--muted);
+			margin: 1.5rem 0 2rem;
+			max-width: 450px;
+		}
+
+		.location__buttons {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .75rem;
+		}
+
+		/* Детали */
+		.details {
+			padding-block: clamp(5rem, 10vw, 9rem);
+		}
+
+		.details__heading {
+			display: grid;
+			gap: 2rem;
+			grid-template-columns: 1fr 1fr;
+			margin-bottom: clamp(3rem, 7vw, 5rem);
+		}
+
+		.details__lead {
+			color: var(--muted);
+			max-width: 440px;
+			padding-top: .5rem;
+		}
+
+		.detail-grid {
+			border-top: 1px solid var(--line);
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.detail {
+			border-right: 1px solid var(--line);
+			min-height: 300px;
+			padding: 2rem;
+		}
+
+		.detail:last-child {
+			border-right: 0;
+		}
+
+		.detail__number {
+			color: var(--terra);
+			font-family: var(--display);
+			font-size: .85rem;
+		}
+
+		.detail h3 {
+			font-family: var(--display);
+			font-size: 1.65rem;
+			font-weight: 400;
+			margin: 3rem 0 1rem;
+		}
+
+		.detail p {
+			color: var(--muted);
+			font-size: .84rem;
+		}
+
+		.palette {
+			display: flex;
+			gap: .45rem;
+			margin-top: 1.6rem;
+		}
+
+		.palette span {
+			border-radius: 50%;
+			display: block;
+			height: 32px;
+			width: 32px;
+		}
+
+		/* Фото */
+		.photos {
+			background: #b96f50;
+			color: white;
+			overflow: hidden;
+			padding: clamp(5rem, 10vw, 8rem) 0;
+			position: relative;
+		}
+
+		.photos::after {
+			background: url('botanical.png') center / cover no-repeat;
+			content: '';
+			inset: 0 0 0 auto;
+			opacity: .14;
+			position: absolute;
+			width: 45%;
+		}
+
+		.photos .kicker {
+			color: #f1d4c3;
+		}
+
+		.photos__layout {
+			display: grid;
+			gap: clamp(2.5rem, 7vw, 6rem);
+			grid-template-columns: .8fr 1.2fr;
+			position: relative;
+			z-index: 1;
+		}
+
+		.photos__intro p {
+			color: rgba(255,255,255,.76);
+			margin-top: 1.4rem;
+			max-width: 400px;
+		}
+
+		.photo-links {
+			border-top: 1px solid rgba(255,255,255,.35);
+		}
+
+		.photo-link {
+			align-items: center;
+			border-bottom: 1px solid rgba(255,255,255,.35);
+			display: grid;
+			gap: 1rem;
+			grid-template-columns: minmax(0, 1fr) auto;
+			padding: 1.5rem 0;
+		}
+
+		.photo-link h3 {
+			font-family: var(--display);
+			font-size: 1.4rem;
+			font-weight: 400;
+		}
+
+		.photo-link p {
+			color: rgba(255,255,255,.7);
+			font-size: .75rem;
+			margin-top: .25rem;
+		}
+
+		.photo-button {
+			background: transparent;
+			border: 1px solid rgba(255,255,255,.68);
+			color: white;
+			cursor: pointer;
+			display: block;
+			font-family: var(--body);
+			font-size: .62rem;
+			font-weight: 500;
+			letter-spacing: .1em;
+			min-height: 46px;
+			padding: .75rem 1rem;
+			text-align: center;
+			text-decoration: none;
+			text-transform: uppercase;
+			transition: background .3s, color .3s, transform .3s;
+		}
+
+		.photo-button:hover {
+			background: white;
+			color: var(--terra);
+			transform: translateY(-2px);
+		}
+
+		.photo-button__note {
+			display: block;
+			font-size: .52rem;
+			font-weight: 300;
+			letter-spacing: .04em;
+			margin-top: .2rem;
+			opacity: .7;
+			text-transform: none;
+		}
+
+		/* Контакты */
+		.contact {
+			padding-block: clamp(5rem, 11vw, 9rem) 3rem;
+			text-align: center;
+		}
+
+		.contact__text {
+			font-family: var(--display);
+			font-size: clamp(1.6rem, 3vw, 2.6rem);
+			line-height: 1.45;
+			margin: 1.25rem auto;
+			max-width: 760px;
+		}
+
+		.contact__note {
+			color: var(--muted);
+			font-size: .78rem;
+			margin: 0 auto 3rem;
+			max-width: 520px;
+		}
+
+		.footer {
+			align-items: center;
+			border-top: 1px solid var(--line);
+			display: flex;
+			font-size: .64rem;
+			justify-content: space-between;
+			letter-spacing: .12em;
+			padding-top: 1.5rem;
+			text-transform: uppercase;
+		}
+
+		.footer__heart {
+			color: var(--terra);
+			font-size: 1rem;
+		}
+
+		.reveal {
+			opacity: 1;
+			transform: none;
+		}
+
+		.js .reveal {
+			opacity: 0;
+			transform: translateY(24px);
+			transition: opacity .9s var(--ease), transform .9s var(--ease);
+		}
+
+		.js .reveal.is-visible {
+			opacity: 1;
+			transform: none;
+		}
+
+		@media (max-width: 820px) {
+			.hero {
+				grid-template-columns: 1fr;
+				grid-template-rows: clamp(280px, 42svh, 430px) minmax(480px, 58svh);
+			}
+
+			.hero__art {
+				background-position: center 42%;
+			}
+
+			.hero__art::after {
+				background: linear-gradient(180deg, transparent 62%, var(--paper-light));
+			}
+
+			.hero__body {
+				padding: 2.5rem 1.5rem 5rem;
+			}
+
+			.hero__body::before {
+				inset: .8rem;
+			}
+
+			.program__grid,
+			.photos__layout,
+			.details__heading {
+				grid-template-columns: 1fr;
+			}
+
+			.location {
+				grid-template-columns: 1fr;
+			}
+
+			.location__map {
+				min-height: 430px;
+			}
+
+			.detail-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.detail {
+				border-bottom: 1px solid var(--line);
+				border-right: 0;
+				min-height: auto;
+				padding: 2rem 0;
+			}
+
+			.detail h3 {
+				margin-top: 1.5rem;
+			}
+		}
+
+		@media (max-width: 520px) {
+			.shell {
+				padding-inline: 1.1rem;
+			}
+
+			.hero {
+				grid-template-rows: clamp(245px, 36svh, 330px) minmax(470px, 64svh);
+			}
+
+			.hero__art {
+				background-position: center 40%;
+			}
+
+			.hero__body {
+				padding-inline: 1.1rem;
+			}
+
+			.hero__names {
+				font-size: clamp(2.75rem, 14vw, 4.2rem);
+			}
+
+			.hero__intro {
+				font-size: .58rem;
+				letter-spacing: .16em;
+				margin-bottom: 1.3rem;
+			}
+
+			.hero__date {
+				gap: .7rem;
+				margin-top: 1.65rem;
+			}
+
+			.hero__date::before,
+			.hero__date::after {
+				width: 28px;
+			}
+
+			.hero__place {
+				font-size: .72rem;
+				letter-spacing: .04em;
+			}
+
+			.title {
+				font-size: clamp(2.1rem, 11vw, 3rem);
+			}
+
+			.countdown__value {
+				font-size: 1.7rem;
+			}
+
+			.countdown__label {
+				font-size: .48rem;
+			}
+
+			.timeline__item {
+				gap: .75rem;
+				grid-template-columns: 70px 1fr;
+			}
+
+			.timeline__time,
+			.timeline__name {
+				font-size: 1.15rem;
+			}
+
+			.location__map {
+				min-height: 360px;
+				padding: 1rem;
+			}
+
+			.location__badge {
+				max-width: 290px;
+				padding: 1rem;
+			}
+
+			.location__content {
+				padding: 3.5rem 1.25rem;
+			}
+
+			.location__buttons,
+			.location__buttons .button {
+				width: 100%;
+			}
+
+			.footer {
+				flex-direction: column;
+				gap: .7rem;
+			}
+
+			.photo-link {
+				align-items: start;
+				grid-template-columns: 1fr;
+			}
+
+			.photo-button {
+				width: 100%;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			html { scroll-behavior: auto; }
+			.scroll-cue::after { animation: none; }
+			.js .reveal { opacity: 1; transform: none; transition: none; }
+		}
+	</style>
+</head>
+<body>
+	<header class="hero">
+		<div class="hero__art" role="img" aria-label="Пампасы, сухоцветы и эвкалипт"></div>
+		<div class="hero__body">
+			<div class="hero__content">
+				<p class="hero__intro">Приглашаем вас на нашу свадьбу</p>
+				<h1 class="hero__names">
+					Владимир
+					<span class="hero__amp">&amp;</span>
+					Алена
+				</h1>
+				<p class="hero__date"><span>01</span><span>08</span><span>2026</span></p>
+				<p class="hero__place">Хутор Мушкино · Калининградская область</p>
+			</div>
+			<a class="scroll-cue" href="#welcome">Подробнее</a>
+		</div>
+	</header>
+
+	<main>
+		<section class="welcome shell" id="welcome">
+			<p class="kicker reveal">Дорогие родные и друзья</p>
+			<p class="welcome__text reveal">
+				Совсем скоро случится день, который мы хотим разделить
+				<em>с самыми близкими.</em> Будем счастливы видеть вас рядом.
+			</p>
+			<div class="countdown reveal" aria-label="До свадьбы осталось">
+				<div class="countdown__item"><span class="countdown__value" id="days">—</span><span class="countdown__label">дней</span></div>
+				<div class="countdown__item"><span class="countdown__value" id="hours">—</span><span class="countdown__label">часов</span></div>
+				<div class="countdown__item"><span class="countdown__value" id="minutes">—</span><span class="countdown__label">минут</span></div>
+				<div class="countdown__item"><span class="countdown__value" id="seconds">—</span><span class="countdown__label">секунд</span></div>
+			</div>
+		</section>
+
+		<section class="program" id="program">
+			<div class="shell program__grid">
+				<div class="program__intro reveal">
+					<p class="kicker">1 августа 2026</p>
+					<h2 class="title">Программа<br>нашего дня</h2>
+					<p>Пожалуйста, приезжайте немного заранее, чтобы спокойно освоиться и встретиться за бокалом игристого.</p>
+				</div>
+				<ol class="timeline reveal">
+					<li class="timeline__item">
+						<time class="timeline__time">15:30</time>
+						<div><p class="timeline__name">Сбор гостей</p><p class="timeline__note">Welcome-зона, лёгкие закуски и первые фотографии</p></div>
+					</li>
+					<li class="timeline__item">
+						<time class="timeline__time">16:00</time>
+						<div><p class="timeline__name">Церемония</p><p class="timeline__note">Самая трогательная часть нашего дня</p></div>
+					</li>
+					<li class="timeline__item">
+						<time class="timeline__time">17:00</time>
+						<div><p class="timeline__name">Праздничный ужин</p><p class="timeline__note">Поздравления, общение и авторская кухня Мушкино</p></div>
+					</li>
+					<li class="timeline__item">
+						<time class="timeline__time">19:30</time>
+						<div><p class="timeline__name">Танцы и праздник</p><p class="timeline__note">Музыка, сюрпризы и тёплый летний вечер</p></div>
+					</li>
+					<li class="timeline__item">
+						<time class="timeline__time">22:00</time>
+						<div><p class="timeline__name">Свадебный торт</p><p class="timeline__note">Сладкий финал официальной программы</p></div>
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="location" id="location">
+			<div class="location__map">
+				<iframe
+					title="Хутор Мушкино на карте"
+					src="https://www.openstreetmap.org/export/embed.html?bbox=20.26%2C54.545%2C20.295%2C54.562&amp;layer=mapnik&amp;marker=54.553051%2C20.27956"
+					loading="eager"
+					referrerpolicy="strict-origin-when-cross-origin"
+				></iframe>
+				<div class="location__badge reveal">
+					<strong>Хутор Мушкино</strong>
+					<span>Калининградская область, Багратионовский район, посёлок Мушкино, 5А</span>
+				</div>
+			</div>
+			<div class="location__content">
+				<div class="reveal">
+					<p class="kicker">Место встречи</p>
+					<h2 class="title">Среди полей<br>и старых деревьев</h2>
+					<p>Хутор Мушкино находится примерно в 23 км от Калининграда. Для гостей мы планируем общий трансфер — точку и время отправления сообщим дополнительно.</p>
+					<div class="location__buttons">
+						<a class="button" href="https://yandex.ru/maps/?text=%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA%20%D0%9C%D1%83%D1%88%D0%BA%D0%B8%D0%BD%D0%BE%205%D0%90" target="_blank" rel="noopener">Яндекс Карты</a>
+						<a class="button" href="https://2gis.ru/kaliningrad/geo/5630135189394285" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="details shell" id="details">
+			<div class="details__heading">
+				<div class="reveal"><p class="kicker">Немного заботы</p><h2 class="title">Важные детали</h2></div>
+				<p class="details__lead reveal">Мы собрали здесь всё, что поможет вам подготовиться и провести этот день легко и красиво.</p>
+			</div>
+			<div class="detail-grid">
+				<article class="detail reveal">
+					<span class="detail__number">01</span>
+					<h3>Дресс-код</h3>
+					<p>Будем рады, если вы поддержите природную палитру нашей свадьбы. Выбирайте спокойные оттенки и натуральные фактуры.</p>
+					<div class="palette" aria-label="Цветовая палитра">
+						<span style="background:#eee4d5"></span><span style="background:#d8c3a4"></span><span style="background:#b96f50"></span><span style="background:#74816a"></span><span style="background:#6f5546"></span>
+					</div>
+				</article>
+				<article class="detail reveal">
+					<span class="detail__number">02</span>
+					<h3>Трансфер</h3>
+					<p>Мы планируем организовать дорогу из Калининграда до Хутора Мушкино и обратно. Точное расписание появится здесь ближе к торжеству.</p>
+				</article>
+				<article class="detail reveal">
+					<span class="detail__number">03</span>
+					<h3>Планы изменились?</h3>
+					<p>Если вы не сможете приехать или ваши планы поменяются, пожалуйста, дайте нам знать. Контакты для связи добавим после согласования.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="photos" id="photos">
+			<div class="shell photos__layout">
+				<div class="photos__intro reveal">
+					<p class="kicker">После праздника</p>
+					<h2 class="title">Сохраним<br>этот день</h2>
+					<p>Самые живые кадры часто остаются в телефонах гостей. Мы соберём их вместе, а позднее здесь появится и профессиональная серия.</p>
+				</div>
+				<div class="photo-links reveal">
+					<div class="photo-link">
+						<div><h3>Фото и видео гостей</h3><p>Облако для загрузки ваших кадров</p></div>
+						<a class="photo-button" href="https://disk.yandex.ru/d/FRr9WqmiyQmbWw" target="_blank" rel="noopener">
+							Загрузить фото и видео
+							<span class="photo-button__note">откроется Яндекс Диск</span>
+						</a>
+					</div>
+					<div class="photo-link">
+						<div><h3>Галерея фотографа</h3><p>Готовые фотографии после свадьбы</p></div>
+						<a class="photo-button" href="https://disk.yandex.ru/d/_GWYrxoYlfU5xw" target="_blank" rel="noopener">
+							Посмотреть фотографии
+							<span class="photo-button__note">откроется Яндекс Диск</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="contact shell">
+			<p class="kicker reveal">До скорой встречи</p>
+			<p class="contact__text reveal">Если у вас появятся вопросы, напишите нам — мы обязательно поможем.</p>
+			<p class="contact__note reveal">Телефоны и ссылки на мессенджеры будут добавлены после согласования контактов.</p>
+			<footer class="footer">
+				<span>Владимир &amp; Алена</span>
+				<span class="footer__heart">♥</span>
+				<span>1 августа 2026</span>
+			</footer>
+		</section>
+	</main>
+
+	<script>
+		const weddingDate = new Date('2026-08-01T16:00:00+02:00');
+		const units = {
+			days: document.querySelector('#days'),
+			hours: document.querySelector('#hours'),
+			minutes: document.querySelector('#minutes'),
+			seconds: document.querySelector('#seconds'),
+		};
+
+		function updateCountdown() {
+			const distance = Math.max(0, weddingDate.getTime() - Date.now());
+			const day = 86_400_000;
+			const hour = 3_600_000;
+			const minute = 60_000;
+			units.days.textContent = String(Math.floor(distance / day));
+			units.hours.textContent = String(Math.floor((distance % day) / hour)).padStart(2, '0');
+			units.minutes.textContent = String(Math.floor((distance % hour) / minute)).padStart(2, '0');
+			units.seconds.textContent = String(Math.floor((distance % minute) / 1000)).padStart(2, '0');
+		}
+
+		updateCountdown();
+		setInterval(updateCountdown, 1000);
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.12 });
+
+		document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+	</script>
+</body>
+</html>
