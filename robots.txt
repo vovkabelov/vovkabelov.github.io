@@ -1,0 +1,20 @@
+User-agent: Googlebot
+Disallow: /wd/
+
+User-agent: Googlebot-Image
+Disallow: /wd/
+
+User-agent: Bingbot
+Disallow: /wd/
+
+User-agent: Yandex
+Disallow: /wd/
+
+User-agent: DuckDuckBot
+Disallow: /wd/
+
+User-agent: Baiduspider
+Disallow: /wd/
+
+User-agent: Slurp
+Disallow: /wd/
