@@ -225,7 +225,7 @@
 		}
 
 		.hero__intro {
-			font-size: .7rem;
+			font-size: .76rem;
 			letter-spacing: .22em;
 			margin-bottom: 1.65rem;
 			text-transform: uppercase;
@@ -235,7 +235,7 @@
 			align-items: baseline;
 			display: flex;
 			font-family: var(--display);
-			font-size: clamp(3.1rem, 4.3vw, 4.3rem);
+			font-size: clamp(3.5rem, 5.15vw, 5.25rem);
 			font-weight: 400;
 			gap: .22em;
 			justify-content: center;
@@ -268,7 +268,7 @@
 		.hero__date-day {
 			color: var(--terra);
 			font-family: var(--display);
-			font-size: 2.9rem;
+			font-size: 3.25rem;
 			letter-spacing: -.04em;
 			line-height: .85;
 		}
@@ -288,7 +288,7 @@
 		}
 
 		.hero__date-month {
-			font-size: .65rem;
+			font-size: .7rem;
 			font-weight: 500;
 			letter-spacing: .22em;
 			text-transform: uppercase;
@@ -297,13 +297,13 @@
 		.hero__date-year {
 			color: var(--muted);
 			font-family: var(--display);
-			font-size: 1.2rem;
+			font-size: 1.32rem;
 			letter-spacing: .12em;
 		}
 
 		.hero__place {
 			color: var(--muted);
-			font-size: .86rem;
+			font-size: .92rem;
 			letter-spacing: .08em;
 		}
 
@@ -867,23 +867,33 @@
 			}
 
 			.hero {
+				background: var(--paper-light);
 				grid-template-columns: 1fr;
 				grid-template-rows: clamp(280px, 42svh, 430px) minmax(510px, 58svh);
+				position: relative;
 			}
 
 			.hero__art {
-				background-position: center 42%;
-				margin-bottom: -58px;
-				min-height: calc(100% + 58px);
+				background: #c89578 url('botanical.png') center top / cover no-repeat;
+				inset: 0;
+				margin: 0;
+				min-height: 100%;
+				position: absolute;
 				width: 100%;
+				z-index: 0;
 			}
 
 			.hero__art::after {
-				background: linear-gradient(180deg, transparent 58%, var(--paper-light) 94%);
+				background: linear-gradient(180deg, transparent 28%, rgba(251,248,243,.08) 56%, rgba(251,248,243,.2) 100%);
 			}
 
 			.hero__body {
+				backdrop-filter: blur(1.5px) saturate(.82);
+				background: rgba(251,248,243,.89);
+				grid-row: 2;
+				margin: .65rem;
 				padding: 4.75rem 1.5rem 5rem;
+				z-index: 1;
 			}
 
 			.hero__body::before {
