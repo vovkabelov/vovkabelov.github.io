@@ -177,7 +177,7 @@
 		.hero {
 			background: var(--paper-light);
 			display: grid;
-			grid-template-columns: minmax(300px, 44%) 1fr;
+			grid-template-columns: minmax(340px, 46%) 1fr;
 			min-height: 100svh;
 			overflow: hidden;
 		}
@@ -186,10 +186,12 @@
 			background: #c89578 url('botanical.png') left center / cover no-repeat;
 			min-height: 100%;
 			position: relative;
+			width: calc(100% + 72px);
+			z-index: 2;
 		}
 
 		.hero__art::after {
-			background: linear-gradient(90deg, transparent 65%, var(--paper-light));
+			background: linear-gradient(90deg, transparent 66%, var(--paper-light) 98%);
 			content: '';
 			inset: 0;
 			position: absolute;
@@ -202,18 +204,22 @@
 			padding: clamp(2.5rem, 7vw, 7rem) clamp(1.5rem, 7vw, 6rem);
 			position: relative;
 			text-align: center;
+			z-index: 1;
 		}
 
 		.hero__body::before {
 			border: 1px solid var(--line);
 			content: '';
 			inset: 1.25rem;
+			opacity: 0;
 			pointer-events: none;
 			position: absolute;
+			transform: scale(.985);
+			animation: frame-in 1s .1s var(--ease) forwards;
 		}
 
 		.hero__content {
-			max-width: 520px;
+			max-width: 700px;
 			position: relative;
 			z-index: 1;
 		}
@@ -221,45 +227,78 @@
 		.hero__intro {
 			font-size: .7rem;
 			letter-spacing: .22em;
-			margin-bottom: 1.8rem;
+			margin-bottom: 1.65rem;
 			text-transform: uppercase;
 		}
 
 		.hero__names {
+			align-items: baseline;
+			display: flex;
 			font-family: var(--display);
-			font-size: clamp(3.3rem, 8vw, 7rem);
+			font-size: clamp(3.1rem, 4.3vw, 4.3rem);
 			font-weight: 400;
+			gap: .22em;
+			justify-content: center;
 			letter-spacing: -.055em;
-			line-height: .95;
+			line-height: 1;
+			white-space: nowrap;
+		}
+
+		.hero__name {
+			display: inline-block;
 		}
 
 		.hero__amp {
 			color: var(--terra);
-			display: block;
+			display: inline-block;
 			font-family: var(--display);
-			font-size: .48em;
-			line-height: .95;
-			margin: .15em 0;
+			font-size: .58em;
+			line-height: 1;
 		}
 
 		.hero__date {
 			align-items: center;
 			display: flex;
-			font-family: var(--display);
-			font-size: clamp(1.1rem, 2vw, 1.4rem);
-			gap: 1rem;
+			gap: 1.15rem;
 			justify-content: center;
-			letter-spacing: .09em;
-			margin: 2.25rem 0 .65rem;
+			margin: 2.15rem auto .85rem;
+			width: fit-content;
+		}
+
+		.hero__date-day {
+			color: var(--terra);
+			font-family: var(--display);
+			font-size: 2.9rem;
+			letter-spacing: -.04em;
+			line-height: .85;
+		}
+
+		.hero__date-rule {
+			background: var(--line);
+			height: 48px;
+			width: 1px;
+		}
+
+		.hero__date-meta {
+			align-items: flex-start;
+			display: flex;
+			flex-direction: column;
+			gap: .25rem;
+			text-align: left;
+		}
+
+		.hero__date-month {
+			font-size: .65rem;
+			font-weight: 500;
+			letter-spacing: .22em;
 			text-transform: uppercase;
 		}
 
-		.hero__date::before,
-		.hero__date::after {
-			background: var(--line);
-			content: '';
-			height: 1px;
-			width: 48px;
+		.hero__date-year {
+			color: var(--muted);
+			font-family: var(--display);
+			font-size: 1.2rem;
+			letter-spacing: .12em;
 		}
 
 		.hero__place {
@@ -295,42 +334,33 @@
 			50% { transform: scaleY(1); transform-origin: top; }
 		}
 
+		.hero__intro,
+		.hero__names,
+		.hero__date,
+		.hero__place {
+			opacity: 0;
+			transform: translateY(14px);
+			animation: hero-reveal .85s var(--ease) forwards;
+		}
+
+		.hero__intro { animation-delay: .18s; }
+		.hero__names { animation-delay: .3s; }
+		.hero__date { animation-delay: .42s; }
+		.hero__place { animation-delay: .52s; }
+
+		@keyframes frame-in {
+			to { opacity: 1; transform: none; }
+		}
+
+		@keyframes hero-reveal {
+			to { opacity: 1; transform: none; }
+		}
+
 		/* Обращение и счетчик */
 		.welcome {
 			padding-block: clamp(5rem, 11vw, 9rem);
 			text-align: center;
 		}
-
-		.monogram {
-			align-items: center;
-			border: 1px solid var(--line);
-			border-radius: 50%;
-			color: var(--terra);
-			display: flex;
-			font-family: var(--display);
-			font-size: 1rem;
-			height: 76px;
-			justify-content: center;
-			letter-spacing: .08em;
-			margin: 0 auto 2.25rem;
-			position: relative;
-			width: 76px;
-		}
-
-		.monogram::before,
-		.monogram::after {
-			background: var(--terra);
-			border-radius: 50%;
-			content: '';
-			height: 4px;
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 4px;
-		}
-
-		.monogram::before { left: -2px; }
-		.monogram::after { right: -2px; }
 
 		.welcome__text {
 			font-family: var(--display);
@@ -746,8 +776,8 @@
 			.mobile-menu__toggle {
 				align-items: center;
 				backdrop-filter: blur(14px);
-				background: rgba(246,241,233,.94);
-				border: 1px solid rgba(216,206,193,.9);
+				background: rgba(246,241,233,.82);
+				border: 1px solid rgba(216,206,193,.75);
 				cursor: pointer;
 				display: flex;
 				height: 48px;
@@ -838,23 +868,43 @@
 
 			.hero {
 				grid-template-columns: 1fr;
-				grid-template-rows: clamp(280px, 42svh, 430px) minmax(480px, 58svh);
+				grid-template-rows: clamp(280px, 42svh, 430px) minmax(510px, 58svh);
 			}
 
 			.hero__art {
 				background-position: center 42%;
+				margin-bottom: -58px;
+				min-height: calc(100% + 58px);
+				width: 100%;
 			}
 
 			.hero__art::after {
-				background: linear-gradient(180deg, transparent 62%, var(--paper-light));
+				background: linear-gradient(180deg, transparent 58%, var(--paper-light) 94%);
 			}
 
 			.hero__body {
-				padding: 2.5rem 1.5rem 5rem;
+				padding: 4.75rem 1.5rem 5rem;
 			}
 
 			.hero__body::before {
 				inset: .8rem;
+			}
+
+			.hero__names {
+				display: block;
+				font-size: clamp(3.1rem, 10vw, 4.7rem);
+				line-height: .96;
+				white-space: normal;
+			}
+
+			.hero__name,
+			.hero__amp {
+				display: block;
+			}
+
+			.hero__amp {
+				font-size: .48em;
+				margin: .12em 0;
 			}
 
 			.program__grid,
@@ -903,7 +953,7 @@
 			}
 
 			.hero {
-				grid-template-rows: clamp(245px, 36svh, 330px) minmax(470px, 64svh);
+				grid-template-rows: clamp(245px, 36svh, 330px) minmax(520px, 64svh);
 			}
 
 			.hero__art {
@@ -911,11 +961,11 @@
 			}
 
 			.hero__body {
-				padding-inline: 1.1rem;
+				padding: 4.5rem 1.1rem 4.75rem;
 			}
 
 			.hero__names {
-				font-size: clamp(2.75rem, 14vw, 4.2rem);
+				font-size: clamp(2.85rem, 14vw, 4.2rem);
 			}
 
 			.hero__intro {
@@ -925,13 +975,24 @@
 			}
 
 			.hero__date {
-				gap: .7rem;
+				gap: .85rem;
 				margin-top: 1.65rem;
 			}
 
-			.hero__date::before,
-			.hero__date::after {
-				width: 28px;
+			.hero__date-day {
+				font-size: 2.55rem;
+			}
+
+			.hero__date-rule {
+				height: 42px;
+			}
+
+			.hero__date-month {
+				font-size: .58rem;
+			}
+
+			.hero__date-year {
+				font-size: 1.05rem;
 			}
 
 			.hero__place {
@@ -999,6 +1060,15 @@
 			html { scroll-behavior: auto; }
 			.scroll-cue::after { animation: none; }
 			.js .reveal { opacity: 1; transform: none; transition: none; }
+			.hero__body::before,
+			.hero__intro,
+			.hero__names,
+			.hero__date,
+			.hero__place {
+				animation: none;
+				opacity: 1;
+				transform: none;
+			}
 		}
 	</style>
 </head>
@@ -1009,11 +1079,18 @@
 			<div class="hero__content">
 				<p class="hero__intro">Приглашаем вас на&nbsp;нашу свадьбу</p>
 				<h1 class="hero__names">
-					Владимир
+					<span class="hero__name">Владимир</span>
 					<span class="hero__amp">&amp;</span>
-					Алена
+					<span class="hero__name">Алена</span>
 				</h1>
-				<p class="hero__date"><span>01</span><span>08</span><span>2026</span></p>
+				<div class="hero__date" aria-label="1 августа 2026">
+					<span class="hero__date-day">01</span>
+					<span class="hero__date-rule" aria-hidden="true"></span>
+					<span class="hero__date-meta">
+						<span class="hero__date-month">августа</span>
+						<span class="hero__date-year">2026</span>
+					</span>
+				</div>
 				<p class="hero__place">Хутор Мушкино · Калининградская область</p>
 			</div>
 			<a class="scroll-cue" href="#welcome">Подробнее</a>
@@ -1022,7 +1099,6 @@
 
 	<main>
 		<section class="welcome shell" id="welcome">
-			<div class="monogram reveal" aria-label="Владимир и Алена">В · А</div>
 			<p class="kicker reveal">Дорогие родные и&nbsp;друзья</p>
 			<p class="welcome__text reveal">
 				Совсем скоро случится день, который мы&nbsp;хотим разделить
