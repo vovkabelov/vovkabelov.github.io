@@ -1,0 +1,22 @@
+{
+	"name": "Свадьба Владимира и Алены",
+	"short_name": "Владимир & Алена",
+	"description": "Приглашение на свадьбу Владимира и Алены — 1 августа 2026 года.",
+	"start_url": "/wd/",
+	"scope": "/wd/",
+	"display": "standalone",
+	"background_color": "#f6f1e9",
+	"theme_color": "#f6f1e9",
+	"icons": [
+		{
+			"src": "android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
