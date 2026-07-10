@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<meta name="theme-color" content="#f6f1e9">
 	<meta name="format-detection" content="telephone=no">
 	<title>Владимир &amp; Алена — 1 августа 2026</title>
@@ -869,7 +869,7 @@
 			.hero {
 				background: var(--paper-light);
 				grid-template-columns: 1fr;
-				grid-template-rows: clamp(280px, 42svh, 430px) minmax(510px, 58svh);
+				grid-template-rows: clamp(280px, 42svh, 430px) minmax(540px, 58svh);
 				position: relative;
 			}
 
@@ -891,7 +891,7 @@
 				backdrop-filter: blur(1.5px) saturate(.82);
 				background: rgba(251,248,243,.89);
 				grid-row: 2;
-				margin: .65rem;
+				margin: .65rem .65rem calc(1.35rem + env(safe-area-inset-bottom, 0px));
 				padding: 4.75rem 1.5rem 5rem;
 				z-index: 1;
 			}
@@ -1170,7 +1170,7 @@
 			<div class="location__content">
 				<div class="reveal">
 					<p class="kicker">Место встречи</p>
-					<h2 class="title">Среди полей<br>и&nbsp;старых деревьев</h2>
+					<h2 class="title">Среди полей<br>и&nbsp;деревьев</h2>
 					<p>Хутор Мушкино находится примерно в&nbsp;23&nbsp;км от&nbsp;Калининграда. Для гостей мы&nbsp;планируем общий трансфер — точку и&nbsp;время отправления сообщим дополнительно.</p>
 					<div class="location__buttons">
 						<a class="button" href="https://yandex.ru/maps/?text=%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA%20%D0%9C%D1%83%D1%88%D0%BA%D0%B8%D0%BD%D0%BE%205%D0%90" target="_blank" rel="noopener">Яндекс Карты</a>
