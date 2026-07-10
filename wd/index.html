@@ -730,57 +730,110 @@
 			transform: none;
 		}
 
-		.mobile-nav {
+		.mobile-menu {
 			display: none;
 		}
 
 		@media (max-width: 820px) {
-			body {
-				padding-bottom: 68px;
-			}
-
-			.mobile-nav {
-				backdrop-filter: blur(14px);
-				background: rgba(246,241,233,.94);
-				border: 1px solid rgba(216,206,193,.9);
-				bottom: 10px;
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				left: 10px;
+			.mobile-menu {
+				display: block;
 				position: fixed;
-				right: 10px;
+				right: 12px;
+				top: 12px;
 				z-index: 40;
 			}
 
-			.mobile-nav a {
+			.mobile-menu__toggle {
 				align-items: center;
-				color: var(--muted);
+				backdrop-filter: blur(14px);
+				background: rgba(246,241,233,.94);
+				border: 1px solid rgba(216,206,193,.9);
+				cursor: pointer;
 				display: flex;
-				font-size: .57rem;
-				font-weight: 500;
+				height: 48px;
 				justify-content: center;
-				letter-spacing: .09em;
-				min-height: 48px;
+				list-style: none;
+				width: 48px;
+			}
+
+			.mobile-menu__toggle::-webkit-details-marker {
+				display: none;
+			}
+
+			.mobile-menu__icon,
+			.mobile-menu__icon::before,
+			.mobile-menu__icon::after {
+				background: var(--ink);
+				height: 1px;
+				position: absolute;
+				transition: transform .25s var(--ease), opacity .2s;
+				width: 18px;
+			}
+
+			.mobile-menu__icon {
 				position: relative;
+			}
+
+			.mobile-menu__icon::before,
+			.mobile-menu__icon::after {
+				content: '';
+				left: 0;
+			}
+
+			.mobile-menu__icon::before { transform: translateY(-6px); }
+			.mobile-menu__icon::after { transform: translateY(6px); }
+
+			.mobile-menu[open] .mobile-menu__icon {
+				background: transparent;
+			}
+
+			.mobile-menu[open] .mobile-menu__icon::before {
+				transform: rotate(45deg);
+			}
+
+			.mobile-menu[open] .mobile-menu__icon::after {
+				transform: rotate(-45deg);
+			}
+
+			.mobile-menu__panel {
+				backdrop-filter: blur(18px);
+				background: rgba(246,241,233,.97);
+				border: 1px solid rgba(216,206,193,.95);
+				margin-top: 8px;
+				padding: .45rem 0;
+				position: absolute;
+				right: 0;
+				width: 220px;
+			}
+
+			.mobile-menu__panel a {
+				color: var(--muted);
+				display: grid;
+				font-size: .66rem;
+				font-weight: 500;
+				gap: .8rem;
+				grid-template-columns: 22px 1fr;
+				letter-spacing: .09em;
+				padding: .85rem 1rem;
 				text-decoration: none;
 				text-transform: uppercase;
 				transition: color .25s;
 			}
 
-			.mobile-nav a + a::before {
-				background: var(--line);
-				content: '';
-				height: 16px;
-				left: 0;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				width: 1px;
+			.mobile-menu__panel a + a {
+				border-top: 1px solid var(--line);
 			}
 
-			.mobile-nav a:active,
-			.mobile-nav a:focus-visible {
+			.mobile-menu__panel a:active,
+			.mobile-menu__panel a:focus-visible {
 				color: var(--terra);
+			}
+
+			.mobile-menu__number {
+				color: var(--terra);
+				font-family: var(--display);
+				font-size: .72rem;
+				letter-spacing: 0;
 			}
 
 			.hero {
@@ -1106,12 +1159,17 @@
 		</section>
 	</main>
 
-	<nav class="mobile-nav" aria-label="Навигация по приглашению">
-		<a href="#program">Тайминг</a>
-		<a href="#location">Карта</a>
-		<a href="#details">Детали</a>
-		<a href="#photos">Фото</a>
-	</nav>
+	<details class="mobile-menu">
+		<summary class="mobile-menu__toggle" aria-label="Открыть меню">
+			<span class="mobile-menu__icon" aria-hidden="true"></span>
+		</summary>
+		<nav class="mobile-menu__panel" aria-label="Навигация по приглашению">
+			<a href="#program"><span class="mobile-menu__number">01</span><span>Тайминг</span></a>
+			<a href="#location"><span class="mobile-menu__number">02</span><span>Карта</span></a>
+			<a href="#details"><span class="mobile-menu__number">03</span><span>Детали</span></a>
+			<a href="#photos"><span class="mobile-menu__number">04</span><span>Фото</span></a>
+		</nav>
+	</details>
 
 	<script>
 		const weddingDate = new Date('2026-08-01T16:00:00+02:00');
@@ -1168,6 +1226,23 @@
 		}, { threshold: 0.12 });
 
 		document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+		const mobileMenu = document.querySelector('.mobile-menu');
+		mobileMenu.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => mobileMenu.removeAttribute('open'));
+		});
+
+		document.addEventListener('click', (event) => {
+			if (mobileMenu.open && !mobileMenu.contains(event.target)) {
+				mobileMenu.removeAttribute('open');
+			}
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') {
+				mobileMenu.removeAttribute('open');
+			}
+		});
 	</script>
 </body>
 </html>
