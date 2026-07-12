@@ -375,11 +375,20 @@
 			font-style: normal;
 		}
 
+		.countdown__heading {
+			color: var(--terra);
+			font-size: .68rem;
+			font-weight: 500;
+			letter-spacing: .2em;
+			margin-top: clamp(3rem, 7vw, 5rem);
+			text-transform: uppercase;
+		}
+
 		.countdown {
 			display: grid;
 			gap: 1px;
 			grid-template-columns: repeat(4, 1fr);
-			margin: clamp(3rem, 7vw, 5rem) auto 0;
+			margin: 1.5rem auto 0;
 			max-width: 720px;
 		}
 
@@ -406,6 +415,31 @@
 			letter-spacing: .14em;
 			margin-top: .65rem;
 			text-transform: uppercase;
+		}
+
+		.countdown-complete {
+			border-bottom: 1px solid var(--line);
+			border-top: 1px solid var(--line);
+			margin: clamp(3rem, 7vw, 5rem) auto 0;
+			max-width: 680px;
+			padding: 2rem 1rem;
+		}
+
+		.countdown-complete__title {
+			color: var(--terra);
+			font-family: var(--display);
+			font-size: clamp(2rem, 4vw, 3rem);
+			line-height: 1.2;
+		}
+
+		.countdown-complete__text {
+			color: var(--muted);
+			font-size: .88rem;
+			margin-top: .7rem;
+		}
+
+		[hidden] {
+			display: none !important;
 		}
 
 		/* Тайминг */
@@ -1128,11 +1162,16 @@
 				Совсем скоро случится день, который мы&nbsp;хотим разделить
 				<em>с&nbsp;самыми близкими.</em> Будем счастливы видеть вас рядом.
 			</p>
-			<div class="countdown reveal" aria-label="До свадьбы осталось">
+			<p class="countdown__heading reveal" id="countdown-heading">До&nbsp;нашей свадьбы осталось</p>
+			<div class="countdown reveal" id="countdown" aria-labelledby="countdown-heading">
 				<div class="countdown__item"><span class="countdown__value" id="days">—</span><span class="countdown__label" id="days-label">дней</span></div>
 				<div class="countdown__item"><span class="countdown__value" id="hours">—</span><span class="countdown__label" id="hours-label">часов</span></div>
 				<div class="countdown__item"><span class="countdown__value" id="minutes">—</span><span class="countdown__label" id="minutes-label">минут</span></div>
 				<div class="countdown__item"><span class="countdown__value" id="seconds">—</span><span class="countdown__label" id="seconds-label">секунд</span></div>
+			</div>
+			<div class="countdown-complete" id="countdown-complete" aria-live="polite" hidden>
+				<p class="countdown-complete__title" id="countdown-complete-title"></p>
+				<p class="countdown-complete__text" id="countdown-complete-text"></p>
 			</div>
 		</section>
 
@@ -1220,7 +1259,7 @@
 				<article class="detail reveal">
 					<span class="detail__number">03</span>
 					<h3>Планы изменились?</h3>
-					<p>Если вы&nbsp;не&nbsp;сможете приехать или ваши планы поменяются, пожалуйста, дайте нам знать. Контакты для связи добавим после согласования.</p>
+					<p>Если вы&nbsp;не&nbsp;сможете приехать или ваши планы поменяются, пожалуйста, дайте нам знать.</p>
 				</article>
 			</div>
 		</section>
@@ -1275,7 +1314,13 @@
 
 	<script>
 		const weddingDate = new Date('2026-08-01T16:00:00+02:00');
+		const weddingDayEnd = new Date('2026-08-02T00:00:00+02:00');
 		const pluralRules = new Intl.PluralRules('ru-RU');
+		const countdown = document.querySelector('#countdown');
+		const countdownHeading = document.querySelector('#countdown-heading');
+		const countdownComplete = document.querySelector('#countdown-complete');
+		const countdownCompleteTitle = document.querySelector('#countdown-complete-title');
+		const countdownCompleteText = document.querySelector('#countdown-complete-text');
 		const units = {
 			days: {
 				value: document.querySelector('#days'),
@@ -1304,8 +1349,29 @@
 			unit.label.textContent = unit.forms[pluralRules.select(value)];
 		}
 
+		let countdownTimer = null;
+
 		function updateCountdown() {
-			const distance = Math.max(0, weddingDate.getTime() - Date.now());
+			const now = Date.now();
+			const distance = weddingDate.getTime() - now;
+
+			if (distance <= 0) {
+				const isWeddingDay = now < weddingDayEnd.getTime();
+				countdown.hidden = true;
+				countdownHeading.hidden = true;
+				countdownComplete.hidden = false;
+				countdownCompleteTitle.textContent = isWeddingDay ? 'Сегодня наш день!' : 'Мы стали семьёй!';
+				countdownCompleteText.textContent = isWeddingDay
+					? 'Мы так счастливы разделить его с вами.'
+					: 'Спасибо, что разделили этот день с нами.';
+
+				if (!isWeddingDay && countdownTimer) {
+					clearInterval(countdownTimer);
+				}
+
+				return;
+			}
+
 			const day = 86_400_000;
 			const hour = 3_600_000;
 			const minute = 60_000;
@@ -1316,7 +1382,9 @@
 		}
 
 		updateCountdown();
-		setInterval(updateCountdown, 1000);
+		if (Date.now() < weddingDayEnd.getTime()) {
+			countdownTimer = setInterval(updateCountdown, 1000);
+		}
 
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
