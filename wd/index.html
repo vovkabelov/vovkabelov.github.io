@@ -651,6 +651,29 @@
 			font-size: .84rem;
 		}
 
+		.gift-note {
+			align-items: start;
+			border-bottom: 1px solid var(--line);
+			border-top: 1px solid var(--line);
+			display: grid;
+			gap: 2rem;
+			grid-template-columns: 48px minmax(190px, 260px) 1fr;
+			padding: 2rem;
+		}
+
+		.gift-note h3 {
+			font-family: var(--display);
+			font-size: 1.65rem;
+			font-weight: 400;
+		}
+
+		.gift-note p {
+			color: var(--muted);
+			font-size: .84rem;
+			line-height: 1.75;
+			max-width: 650px;
+		}
+
 		.palette {
 			display: flex;
 			gap: .45rem;
@@ -1000,8 +1023,22 @@
 				padding: 2rem 0;
 			}
 
+			.detail:last-child {
+				border-bottom: 0;
+			}
+
 			.detail h3 {
 				margin-top: 1.5rem;
+			}
+
+			.gift-note {
+				gap: .8rem;
+				grid-template-columns: 1fr;
+				padding: 2rem 0;
+			}
+
+			.gift-note h3 {
+				margin-bottom: .25rem;
 			}
 		}
 
@@ -1262,6 +1299,11 @@
 					<p>Если вы&nbsp;не&nbsp;сможете приехать или ваши планы поменяются, пожалуйста, дайте нам знать.</p>
 				</article>
 			</div>
+			<article class="gift-note reveal">
+				<span class="detail__number">04</span>
+				<h3>Вместо цветов</h3>
+				<p>После свадьбы мы&nbsp;почти сразу уедем в&nbsp;отпуск, поэтому будем благодарны, если вы&nbsp;не&nbsp;станете дарить нам цветы — будет жаль, если они завянут без нас. Если хочется дополнить подарок чем-то символичным, вместо букета можно выбрать бутылку вина: однажды мы&nbsp;откроем её и&nbsp;с&nbsp;теплом вспомним этот день.</p>
+			</article>
 		</section>
 
 		<section class="photos" id="photos">
